@@ -1,7 +1,7 @@
 /** 
 *@ProjectName: mybatis 
 *@FileName: MysqlDialect.java 
-*@Date: 2016Äê3ÔÂ31ÈÕ 
+*@Date: 2016ï¿½ï¿½3ï¿½ï¿½31ï¿½ï¿½ 
 *@Copyright: 2016 tianjunwei All rights reserved. 
 */
 package com.tianjunwei.page.dialect;
@@ -12,9 +12,9 @@ import org.apache.ibatis.session.RowBounds;
 /**
  * @Title: MysqlDialect.java
  * @Package com.tianjunwei.page.dialect
- * @Description: mysqlµÄ·ÖÒ³·½ÑÔ
+ * @Description: mysqlåˆ†é¡µæ–¹è¨€
  * @author tianjunwei tiantianjunwei@126.com
- * @date 2016Äê3ÔÂ31ÈÕ ÏÂÎç11:15:47
+ * @date 2016 å¹´ 3 æœˆ31æ—¥ ä¸‹åˆ11:15:47
  * @version V1.0
  */
 public class MysqlDialect extends Dialect {
@@ -24,7 +24,7 @@ public class MysqlDialect extends Dialect {
 	    }
 
 	/**
-	 * ×é×°·ÖÒ³Óï¾ä 
+	 * ç»„è£…åˆ†é¡µè¯­å¥
 	 * @param sql 
 	 * @param offsetName 
 	 * @param offset 
