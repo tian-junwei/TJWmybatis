@@ -1,7 +1,7 @@
 /** 
 *@ProjectName: mybatis 
 *@FileName: Dialect.java 
-*@Date: 2016Äê3ÔÂ31ÈÕ 
+*@Date: 2016ï¿½ï¿½3ï¿½ï¿½31ï¿½ï¿½ 
 *@Copyright: 2016 tianjunwei All rights reserved. 
 */  
 package com.tianjunwei.page.dialect;
@@ -25,12 +25,12 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 /**    
 * @Title: Dialect.java  
 * @Package com.tianjunwei.page.dialect  
-* @Description: ·½ÑÔÀà  
+* @Description: æ–¹è¨€ç±»
 * @author tianjunwei  tiantianjunwei@126.com   
-* @date 2016Äê3ÔÂ31ÈÕ ÏÂÎç11:10:04  
+* @date 2016 å¹´3 æœˆ31æ—¥ ä¸‹åˆ11:10:04  
 * @version V1.0    
 */
-public class Dialect {
+public abstract class Dialect {
     protected TypeHandlerRegistry typeHandlerRegistry;
     protected MappedStatement mappedStatement;
     protected RowBounds pageBounds;
@@ -53,16 +53,16 @@ public class Dialect {
 	protected void init(){
         boundSql = mappedStatement.getBoundSql(parameterObject);
         parameterMappings = new ArrayList(boundSql.getParameterMappings());
-        //ÅĞ¶Ï²ÎÊı¶ÔÏóÊÇ·ñÊÇÒ»¸ömap
+        //ï¿½Ğ¶Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½map
         if(parameterObject != null){
 	        if(parameterObject instanceof Map){
-	        	//Èç¹ûÊÇmapÔòÖ±½Ó×·¼Óµ½pageParameters
+	        	//ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½ï¿½Ö±ï¿½ï¿½×·ï¿½Óµï¿½pageParameters
 	            pageParameters.putAll((Map)parameterObject);
 	            
-	        //Èç¹û²»ÊÇmapÇÒ²»Îª¿ÕÔò°´ÕÕ²ÎÊıputµ½pageParametersÖĞ
+	        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½Ò²ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½putï¿½ï¿½pageParametersï¿½ï¿½
 	        }else{
 	            Class cls = parameterObject.getClass();
-	            //ÅĞ¶ÏÀàÊÇ·ñÊÇÒ»¸ö»ù±¾ÀàĞÍ£¬Êı×é£¬ÊÇ·ñÊÇ»ù±¾ÀàĞÍµÄ¶ÔÏó£¬¼°ÊÇ·ñÊÇ¼¯ºÏ
+	            //ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½é£¬ï¿½Ç·ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¶ï¿½ï¿½ó£¬¼ï¿½ï¿½Ç·ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½
 	            if(cls.isPrimitive() || cls.isArray() ||
 	                    SimpleTypeRegistry.isSimpleType(cls) ||
 	                    Enum.class.isAssignableFrom(cls) ||
@@ -70,7 +70,7 @@ public class Dialect {
 	                for (ParameterMapping parameterMapping : parameterMappings) {
 	                    pageParameters.put(parameterMapping.getProperty(),parameterObject);
 	                }
-	            //Èç¹û²»ÊÇÒÔÉÏÀàĞÍ£¬´ò°ü³É¶ÔÏó
+	            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½
 	            }else{
 	                MetaObject metaObject = mappedStatement.getConfiguration().newMetaObject(parameterObject);
 	                ObjectWrapper wrapper = metaObject.getObjectWrapper();
@@ -116,7 +116,7 @@ public class Dialect {
 
     /**
      * @Title: getLimitString 
-     * @Description: ½«sql±ä³É·ÖÒ³sqlÓï¾ä
+     * @Description: ï¿½ï¿½sqlï¿½ï¿½É·ï¿½Ò³sqlï¿½ï¿½ï¿½
      * @param sql
      * @param offsetName
      * @param offset
