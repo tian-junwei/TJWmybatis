@@ -122,7 +122,6 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 			final Element elementMapper) {
 		SAXReader saxReader = new SAXReader();
 		saxReader.setEntityResolver(new EntityResolver() {
-			@Override
 			public InputSource resolveEntity(String publicId, String systemId)
 					throws SAXException, IOException {
 				String jarPath = SqlSessionFactory.class.getProtectionDomain()
