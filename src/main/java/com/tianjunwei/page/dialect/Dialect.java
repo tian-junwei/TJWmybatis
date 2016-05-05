@@ -53,16 +53,16 @@ public abstract class Dialect {
 	protected void init(){
         boundSql = mappedStatement.getBoundSql(parameterObject);
         parameterMappings = new ArrayList(boundSql.getParameterMappings());
-        //�жϲ��������Ƿ���һ��map
+        //判断参数类型
         if(parameterObject != null){
 	        if(parameterObject instanceof Map){
-	        	//�����map��ֱ��׷�ӵ�pageParameters
+	        	//参数类型为map
 	            pageParameters.putAll((Map)parameterObject);
 	            
-	        //�������map�Ҳ�Ϊ�����ղ���put��pageParameters��
+	        //如果参数类型不是map
 	        }else{
 	            Class cls = parameterObject.getClass();
-	            //�ж����Ƿ���һ���������ͣ����飬�Ƿ��ǻ������͵Ķ��󣬼��Ƿ��Ǽ���
+	            //判断是否是基本类型或者数组
 	            if(cls.isPrimitive() || cls.isArray() ||
 	                    SimpleTypeRegistry.isSimpleType(cls) ||
 	                    Enum.class.isAssignableFrom(cls) ||
@@ -70,7 +70,7 @@ public abstract class Dialect {
 	                for (ParameterMapping parameterMapping : parameterMappings) {
 	                    pageParameters.put(parameterMapping.getProperty(),parameterObject);
 	                }
-	            //��������������ͣ�����ɶ���
+	            //如果不是基本类型或者数组
 	            }else{
 	                MetaObject metaObject = mappedStatement.getConfiguration().newMetaObject(parameterObject);
 	                ObjectWrapper wrapper = metaObject.getObjectWrapper();
@@ -116,7 +116,7 @@ public abstract class Dialect {
 
     /**
      * @Title: getLimitString 
-     * @Description: ��sql��ɷ�ҳsql���
+     * @Description: 获得分页语句
      * @param sql
      * @param offsetName
      * @param offset
