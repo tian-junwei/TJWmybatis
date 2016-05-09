@@ -168,7 +168,6 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 						els.addAttribute("resource", resource);
 						row.detach();
 					}
-
 					public void onStart(ElementPath arg0) {
 
 					}
