@@ -64,11 +64,9 @@ import com.sun.beans.decoder.ValueObject;
  * @date 2016年4月21日 下午11:46:59
  * @version V1.0
  */
-@SuppressWarnings("restriction")
 public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 
-	private static final Log logger = LogFactory
-			.getLog(SqlSessionFactoryBean.class);
+	private static final Log logger = LogFactory.getLog(SqlSessionFactoryBean.class);
 	private SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
 	private Interceptor[] plugins;
 	private Class<?>[] typeAliases;
@@ -122,6 +120,7 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 			final Element elementMapper) {
 		SAXReader saxReader = new SAXReader();
 		saxReader.setEntityResolver(new EntityResolver() {
+			@SuppressWarnings("resource")
 			public InputSource resolveEntity(String publicId, String systemId)
 					throws SAXException, IOException {
 				String jarPath = SqlSessionFactory.class.getProtectionDomain()
@@ -153,10 +152,7 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 
 					public void onStart(ElementPath arg0) {
 					}
-
-					protected ValueObject getValueObject() {
-						return null;
-					}
+					
 				});
 
 		/* mapper合并 */
@@ -175,10 +171,6 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 
 					public void onStart(ElementPath arg0) {
 
-					}
-
-					protected ValueObject getValueObject() {
-						return null;
 					}
 				});
 
@@ -219,9 +211,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 			}
 			document = null;
 		} else {
-			if (this.logger.isDebugEnabled()) {
-				this.logger
-						.debug("Property 'configLocation' not specified,using default MyBatis Configuration");
+			if (logger.isDebugEnabled()) {
+				logger.debug("Property 'configLocation' not specified,using default MyBatis Configuration");
 			}
 			configuration = new Configuration();
 			configuration.setVariables(this.configurationProperties);
@@ -234,8 +225,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 			for (String packageToScan : typeAliasPackageArray) {
 				configuration.getTypeAliasRegistry().registerAliases(
 						packageToScan);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Scanned package: '" + packageToScan
+				if (logger.isDebugEnabled()) {
+					logger.debug("Scanned package: '" + packageToScan
 							+ "' for aliases");
 				}
 			}
@@ -243,8 +234,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 		if (!isEmpty(this.typeAliases)) {
 			for (Class<?> typeAlias : this.typeAliases) {
 				configuration.getTypeAliasRegistry().registerAlias(typeAlias);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Registered type alias: '" + typeAlias
+				if (logger.isDebugEnabled()) {
+					logger.debug("Registered type alias: '" + typeAlias
 							+ "'");
 				}
 			}
@@ -253,8 +244,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 		if (!isEmpty(this.plugins)) {
 			for (Interceptor plugin : this.plugins) {
 				configuration.addInterceptor(plugin);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Registered plugin: '" + plugin + "'");
+				if (logger.isDebugEnabled()) {
+					logger.debug("Registered plugin: '" + plugin + "'");
 				}
 			}
 		}
@@ -265,8 +256,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 					ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
 			for (String packageToScan : typeHandlersPackageArray) {
 				configuration.getTypeHandlerRegistry().register(packageToScan);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Scanned package: '" + packageToScan
+				if (logger.isDebugEnabled()) {
+					logger.debug("Scanned package: '" + packageToScan
 							+ "' for type handlers");
 				}
 			}
@@ -275,8 +266,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 		if (!isEmpty(this.typeHandlers)) {
 			for (TypeHandler<?> typeHandler : this.typeHandlers) {
 				configuration.getTypeHandlerRegistry().register(typeHandler);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Registered type handler: '"
+				if (logger.isDebugEnabled()) {
+					logger.debug("Registered type handler: '"
 							+ typeHandler + "'");
 				}
 			}
@@ -286,8 +277,8 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 			try {
 				xmlConfigBuilder.parse();
 
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Parsed configuration file: '"
+				if (logger.isDebugEnabled()) {
+					logger.debug("Parsed configuration file: '"
 							+ this.configLocations + "'");
 				}
 			} catch (Exception ex) {
@@ -335,14 +326,14 @@ public class MySQLSessionFactoryBean extends SqlSessionFactoryBean {
 					ErrorContext.instance().reset();
 				}
 
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Parsed mapper file: '" + mapperLocation
+				if (logger.isDebugEnabled()) {
+					logger.debug("Parsed mapper file: '" + mapperLocation
 							+ "'");
 				}
 			}
 		} else {
-			if (this.logger.isDebugEnabled()) {
-				this.logger
+			if (logger.isDebugEnabled()) {
+				logger
 						.debug("Property 'mapperLocations' was not specified or no matching resources found");
 			}
 		}
