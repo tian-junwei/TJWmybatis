@@ -54,8 +54,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.sun.beans.decoder.ValueObject;
-
 /**
  * @Title: MySQLSessionFactoryBean.java
  * @Package com.tianjunwei.typealiases
