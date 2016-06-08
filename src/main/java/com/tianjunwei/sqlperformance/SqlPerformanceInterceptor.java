@@ -42,7 +42,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 				RowBounds.class, ResultHandler.class }) })
 public class SqlPerformanceInterceptor implements Interceptor {
 	
-	public static final Map<String, Sql> sqlMap=new ConcurrentHashMap<String, Sql>();
+	public static final Map<String, SqlEntity> sqlMap=new ConcurrentHashMap<String, SqlEntity>();
 	public String mapperIds ="";
 	
 	public Object intercept(Invocation invocation) throws Throwable {
@@ -64,12 +64,12 @@ public class SqlPerformanceInterceptor implements Interceptor {
 		long endTime = System.currentTimeMillis();
 		String[] mapperId = mapperIds.split(",");
 		if(mapperIds.length() < 1 || mapperId.length < 1 ){
-			Sql sql = getSql(configuration, boundSql, sqlId, startTime,endTime);
+			SqlEntity sql = getSql(configuration, boundSql, sqlId, startTime,endTime);
 			sqlMap.put(sqlId, sql);
 		}else{
 			for(int i = 0; i < mapperId.length ; i++){
 				if(sqlId.startsWith(mapperId[i])){
-					Sql sql = getSql(configuration, boundSql, sqlId, startTime,endTime);
+					SqlEntity sql = getSql(configuration, boundSql, sqlId, startTime,endTime);
 					sqlMap.put(sqlId, sql);
 					break;
 				}
@@ -91,13 +91,13 @@ public class SqlPerformanceInterceptor implements Interceptor {
 	 * @modify by user:tianjunwei
 	 * @modify by reason:
 	 */
-	public static Sql getSql(Configuration configuration, BoundSql boundSql, String sqlId, long startTime, long endTime) {
+	public static SqlEntity getSql(Configuration configuration, BoundSql boundSql, String sqlId, long startTime, long endTime) {
 		
 		String sqlString = showSql(configuration, boundSql);
-		Sql sql = sqlMap.get(sqlId);
+		SqlEntity sql = sqlMap.get(sqlId);
 		long executorTime = endTime - startTime;
 		if(sql == null){
-			sql = new Sql();
+			sql = new SqlEntity();
 			sql.setSqlId(sqlId);
 			sql.setSql(sqlString);
 			sql.setTotal(1);

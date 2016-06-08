@@ -2,7 +2,7 @@ package com.tianjunwei.sqlperformance;
 /**
  * sql映射id类实体，用于记录sqlId，执行次数total，平均执行时间averageTime,最大执行时间maxTime,带完整参数的sql语句sql
  */
-public class Sql {
+public class SqlEntity {
 	
 	private String sqlId;
 	

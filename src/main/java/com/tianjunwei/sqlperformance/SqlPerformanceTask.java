@@ -91,10 +91,10 @@ public class SqlPerformanceTask{
 	 */
 	public String getData(){
 		StringBuilder column = new StringBuilder();
-		Map<String, Sql> sqlMap= SqlPerformanceInterceptor.sqlMap;
+		Map<String, SqlEntity> sqlMap= SqlPerformanceInterceptor.sqlMap;
 		column.append("sqlId,sql,avg_time,max_time,frequency\r\n");
-		for (Map.Entry<String, Sql> entry : sqlMap.entrySet()) {
-			Sql sql = entry.getValue();
+		for (Map.Entry<String, SqlEntity> entry : sqlMap.entrySet()) {
+			SqlEntity sql = entry.getValue();
 			column.append(sql.getSqlId());
 			column.append(",");
 			column.append("\""+sql.getSql()+"\"");
