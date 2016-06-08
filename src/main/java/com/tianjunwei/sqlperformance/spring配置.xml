@@ -1,0 +1,10 @@
+<!-- sql语句性能定时任务 -->
+<bean id="sqlPerformanceTask"
+	class="包路径.SqlPerformanceTask">
+	<property name="folder" value="folder"></property>
+</bean>
+<!-- spring 定时任务 -->
+<task:scheduled-tasks>
+	<task:scheduled ref="sqlPerformanceTask" method="run" cron="0 1 * * * ?" />
+	<!-- 定时时间，秒、分、小时、日期、月份、星期、年(可选)，*通配符，？不想设置那个字段 -->
+</task:scheduled-tasks>
