@@ -34,12 +34,7 @@ public class SqlPerformanceTask{
         	log.debug("SqlPerformanceTask total time: "+ lasttimeDuration);		
 	}
 	/** 
-	 * @Title: saveAsCSVFile 
 	 *  将获得的sql语句记录在csv文件中 
-	 * @throws
-	 * @2016年2月3日下午6:52:01
-	 * @modify by user:tianjunwei
-	 * @modify by reason:
 	 */ 
 	private void saveAsCSVFile() {
 		 	String date=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());

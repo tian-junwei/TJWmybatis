@@ -27,13 +27,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 
 /**
- * @ClassName: SqlPerformanceInterceptor.java
- * @Description: mybatis插件，实现打印mybatis执行的sql语句执行时间，用于监控sql语句执行的性能
- * @author tianjunwei
- * @date 2016年1月21日下午2:04:39
- * @modify by user: tianjunwei
- * @modify by reason: 
- * @version V1.0
+ *  mybatis插件，实现打印mybatis执行的sql语句执行时间，用于监控sql语句执行的性能
  */
 
 @Intercepts({
@@ -79,17 +73,7 @@ public class SqlPerformanceInterceptor implements Interceptor {
 	}
 
 	/***
-	 * @Title: getSql 
-	 * @Description: 获得sql语句执行的性能信息
-	 * @param configuration 
-	 * @param boundSql
-	 * @param sqlId
-	 * @param time sql执行时间
-	 * @param end 
-	 * @return   String   组装后的sql语句执行性能
-	 * @2016年1月21日下午2:05:40
-	 * @modify by user:tianjunwei
-	 * @modify by reason:
+	 * 获得sql语句执行的性能信息
 	 */
 	public static SqlEntity getSql(Configuration configuration, BoundSql boundSql, String sqlId, long startTime, long endTime) {
 		
@@ -118,14 +102,7 @@ public class SqlPerformanceInterceptor implements Interceptor {
 	}
 
 	/***
-	 * @Title: getParameterValue 
-	 * @Description: 获得参数信息
-	 * @param obj
-	 * @return String 
-	 * @throws
-	 * @2016年1月21日下午2:07:40
-	 * @modify by user:tianjunwei
-	 * @modify by reason
+	 * 获得参数信息
 	 */
 	private static String getParameterValue(Object obj) {
 		String value = null;
@@ -145,14 +122,7 @@ public class SqlPerformanceInterceptor implements Interceptor {
 	}
 
 	/***
-	 * @Title: showSql 
-	 * @Description: 将参数和sql语句组装起来
-	 * @param configuration
-	 * @param boundSql
-	 * @return String 
-	 * @2016年1月21日下午2:08:05
-	 * @modify by user:tianjunwei
-	 * @modify by reason:
+	 * 将参数和sql语句组装起来
 	 */
 	public static String showSql(Configuration configuration, BoundSql boundSql) {
 		Object parameterObject = boundSql.getParameterObject();
