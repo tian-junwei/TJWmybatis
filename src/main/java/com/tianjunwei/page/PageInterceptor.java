@@ -28,8 +28,6 @@ import com.tianjunwei.page.dialect.DialectFactory;
 		method = "query",
 		args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 public class PageInterceptor implements Interceptor{
-
-	
 		static int MAPPED_STATEMENT_INDEX = 0;
 		static int PARAMETER_INDEX = 1;
 		static int ROWBOUNDS_INDEX = 2;

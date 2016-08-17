@@ -12,8 +12,6 @@
 	default-autowire="byName">
 	
 	<import resource="datasource.xml" />
-	<!-- <import resource="rabbitmq/rabbitmq_consumer.xml"/> -->
-	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
 	<bean id="sqlSessionFactory" class="com.tianjunwei.typealiases.MySQLSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
