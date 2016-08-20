@@ -5,12 +5,12 @@
 
 <mapper namespace="com.tianjunwei.log.dao.entity.Log">
 
-	<!-- <typeAliases>
-		<typeAlias alias="Log" type="com.tianjunwei.log.dao.entity.Log" />
-	</typeAliases> -->
-
 	<select id="get" resultMap="log">
 		select * from tbl_log limit 1
+	</select>
+
+	<select id="list" resultMap="log">
+		select * from tbl_log where logInfo=${typeString}
 	</select>
 
 	<resultMap type="com.tianjunwei.log.dao.entity.Log" id="log">

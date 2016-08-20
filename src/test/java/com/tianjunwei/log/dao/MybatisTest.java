@@ -6,6 +6,7 @@
 */  
 package com.tianjunwei.log.dao;
 
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -34,6 +35,13 @@ public class MybatisTest {
 	public void get(){
 		Log log = sqlSessionTemplate.selectOne(Log.class.getName()+".get");
 		System.err.println(log.getLogInfo());
+	}
+	
+	@Test
+	public void list(){
+		RowBounds rowBounds = new RowBounds(1, 10);
+		String typeString ="error";
+		sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
 	}
 
 }
