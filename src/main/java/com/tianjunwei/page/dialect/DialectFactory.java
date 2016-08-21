@@ -6,8 +6,8 @@ public class DialectFactory {
 	
 	private static String dialectClass = null;
 	
-	public static String getDialectClass(String databaseProductName,String dataBaseType) throws Exception{
-		if(databaseProductName.toLowerCase().indexOf("mysql") != -1 
+	public static String getDialectClass(String dataBaseType) throws Exception{
+		/*if(databaseProductName.toLowerCase().indexOf("mysql") != -1 
       			&& dataBaseType.toLowerCase().indexOf("mysql") != -1){
       		dialectClass = MysqlDialect.class.getName();
       	}else if(databaseProductName.toLowerCase().indexOf("oracle") != -1 
@@ -24,7 +24,9 @@ public class DialectFactory {
       		dialectClass = Sqlserver2012Dialect.class.getName();	
       	}else {
 			throw new Exception("no support "+databaseProductName+" dialect");
-		}
+		}*/
+		
+		dialectClass = "com.tianjunwei.page.dialect."+dataBaseType.substring(0, 1).toUpperCase() + dataBaseType.substring(1).toLowerCase()+"Dialect";
 		return dialectClass;
 	}
 }

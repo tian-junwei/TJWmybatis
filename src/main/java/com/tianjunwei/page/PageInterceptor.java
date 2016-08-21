@@ -64,7 +64,7 @@ public class PageInterceptor implements Interceptor{
 	        //通过xml方言的配置来获得方言类
 	        if(databaseProductName != null && !("".equals(dataBaseType))){
 	        	
-	        	dialectClass = DialectFactory.getDialectClass(databaseProductName, dataBaseType);
+	        	dialectClass = DialectFactory.getDialectClass(dataBaseType);
 	        
 	        }else{
 	        	throw new Exception("the property of dialect is null");
