@@ -58,8 +58,11 @@ public class PageInterceptor implements Interceptor{
 			}
 	         
 	        String databaseProductName = databaseMetaData.getDatabaseProductName();
+	        if( dataBaseType == null || "".equals(dataBaseType)){
+	        	dataBaseType = databaseProductName;
+	        }
 	        //通过xml方言的配置来获得方言类
-	        if(dataBaseType != null && !("".equals(dataBaseType))){
+	        if(databaseProductName != null && !("".equals(dataBaseType))){
 	        	
 	        	dialectClass = DialectFactory.getDialectClass(databaseProductName, dataBaseType);
 	        

@@ -1,7 +1,5 @@
 package com.tianjunwei.page.dialect;
 
-import ch.qos.logback.core.db.dialect.MySQLDialect;
-import ch.qos.logback.core.db.dialect.PostgreSQLDialect;
 
 public class DialectFactory {
 
@@ -11,13 +9,13 @@ public class DialectFactory {
 	public static String getDialectClass(String databaseProductName,String dataBaseType) throws Exception{
 		if(databaseProductName.toLowerCase().indexOf("mysql") != -1 
       			&& dataBaseType.toLowerCase().indexOf("mysql") != -1){
-      		dialectClass = MySQLDialect.class.getName();
+      		dialectClass = MysqlDialect.class.getName();
       	}else if(databaseProductName.toLowerCase().indexOf("oracle") != -1 
       			&& dataBaseType.toLowerCase().indexOf("oracle") != -1){
       		dialectClass = OracleDialect.class.getName();
       	}else if (databaseProductName.toLowerCase().indexOf("postgresql") != -1
       			&& dataBaseType.toLowerCase().indexOf("postgresql") != -1) {
-      		dialectClass = PostgreSQLDialect.class.getName();
+      		dialectClass = PostgresqlDialect.class.getName();
       	}else if(dataBaseType.toLowerCase().indexOf("sqlserver2005") != -1){
       		dialectClass = Sqlserver2005Dialect.class.getName();
       	}else if(dataBaseType.toLowerCase().indexOf("sqlserver2008") != -1){

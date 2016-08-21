@@ -31,7 +31,7 @@ public class MybatisTest {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	@Test 
+	//@Test 
 	public void get(){
 		Log log = sqlSessionTemplate.selectOne(Log.class.getName()+".get");
 		System.err.println(log.getLogInfo());
@@ -40,7 +40,7 @@ public class MybatisTest {
 	@Test
 	public void list(){
 		RowBounds rowBounds = new RowBounds(1, 10);
-		String typeString ="error";
+		String typeString ="sdsdsfddsa";
 		sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
 	}
 

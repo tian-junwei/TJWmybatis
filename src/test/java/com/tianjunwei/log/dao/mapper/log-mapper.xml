@@ -9,8 +9,8 @@
 		select * from tbl_log limit 1
 	</select>
 
-	<select id="list" resultMap="log">
-		select * from tbl_log where logInfo=${typeString}
+	<select id="list" resultMap="log" parameterType="string">
+		select * from tbl_log where log_info=#{typeString}
 	</select>
 
 	<resultMap type="com.tianjunwei.log.dao.entity.Log" id="log">
