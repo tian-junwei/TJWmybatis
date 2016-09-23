@@ -18,5 +18,8 @@
          userMapper.xml位于me.gacl.mapping这个包下，所以resource写成me/gacl/mapping/userMapper.xml-->
          <mapper resource="com/tianjunwei/learn/learn1/mapper/UserMapper.xml"/>
      </mappers>
-     <setting name="cacheEnabled" value="true"/>
+     <settings>
+     	<setting name="cacheEnabled" value="true"/>
+     	<setting name="defaultExecutorType" value="SIMPLE"/> <!--SIMPLE、REUSE、BATCH-->
+     </settings>
 </configuration>

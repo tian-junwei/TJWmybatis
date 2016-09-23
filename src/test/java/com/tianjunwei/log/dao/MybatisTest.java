@@ -6,6 +6,7 @@
 */  
 package com.tianjunwei.log.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -33,24 +34,38 @@ public class MybatisTest {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
+	@Test
+	public void save(){
+		List<Log> list = new ArrayList<Log>();
+		Log log = new Log();
+		log.setLogInfo("logInfo");
+		log.setLogType(1);
+		list.add(log);
+		Log log2 = new Log();
+		log2.setLogInfo("logInfo");
+		log2.setLogType(2);
+		list.add(log2);
+		System.err.println(sqlSessionTemplate.insert(Log.class.getName()+".save", list));
+	}
+	
 	//@Test 
 	public void get(){
 		Log log = sqlSessionTemplate.selectOne(Log.class.getName()+".get");
 		System.err.println(log.getLogInfo());
 	}
 	
-	@Test
+	//@Test
 	public void list(){
 		RowBounds rowBounds = new RowBounds(1, 10);
 		String typeString ="a";
-		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
+		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".listOne", typeString, rowBounds);
 		System.err.println(list.size());
 	}
 	
-	@Test
+	//@Test
 	public void list2(){
 		RowBounds rowBounds = new RowBounds(1, 10);
-		String typeString ="a";
+		String []typeString ={"a","b","c"};
 		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
 		System.err.println(list.size());
 	}

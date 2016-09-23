@@ -5,18 +5,36 @@
 
 <mapper namespace="com.tianjunwei.log.dao.entity.Log">
 
-	<cache
+	<!-- <cache
         eviction="FIFO"
         flushInterval="60000"
         size="512"
-        readOnly="true" />
-
+        readOnly="true" /> -->
+	
+	<insert id="save">
+		insert into tbl_log (log_type,log_info) values
+		  <foreach collection ="list" item="list" index= "index" separator =",">
+		    (#{list.logType},#{list.logInfo})
+		  </foreach>
+	</insert>
+	
 	<select id="get" resultMap="log">
 		select * from tbl_log limit 1
 	</select>
 
-	<select id="list" resultMap="log" parameterType="string">
+	<select id="listOne" resultMap="log" parameterType="string">
 		select * from tbl_log where log_info=#{typeString}
+	</select>
+
+	<select id="list" resultMap="log" parameterType="string">
+		select * from tbl_log
+		<where>
+			log_info in 
+			<foreach collection="array" separator="," open="(" close=")" index="" item="typeString">
+				#{typeString}
+			</foreach>
+			
+		</where>
 	</select>
 
 	<delete id="delete" parameterType="int">
