@@ -6,6 +6,8 @@
 */  
 package com.tianjunwei.log.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,8 +42,17 @@ public class MybatisTest {
 	@Test
 	public void list(){
 		RowBounds rowBounds = new RowBounds(1, 10);
-		String typeString ="sdsdsfddsa";
-		sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
+		String typeString ="a";
+		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
+		System.err.println(list.size());
+	}
+	
+	@Test
+	public void list2(){
+		RowBounds rowBounds = new RowBounds(1, 10);
+		String typeString ="a";
+		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
+		System.err.println(list.size());
 	}
 
 }

@@ -5,6 +5,12 @@
 
 <mapper namespace="com.tianjunwei.log.dao.entity.Log">
 
+	<cache
+        eviction="FIFO"
+        flushInterval="60000"
+        size="512"
+        readOnly="true" />
+
 	<select id="get" resultMap="log">
 		select * from tbl_log limit 1
 	</select>
@@ -12,6 +18,7 @@
 	<select id="list" resultMap="log" parameterType="string">
 		select * from tbl_log where log_info=#{typeString}
 	</select>
+
 
 	<resultMap type="com.tianjunwei.log.dao.entity.Log" id="log">
 		<id column="i_id" property="id"></id>
