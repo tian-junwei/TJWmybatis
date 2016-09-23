@@ -54,5 +54,10 @@ public class MybatisTest {
 		List<Log> list = sqlSessionTemplate.selectList(Log.class.getName()+".list", typeString, rowBounds);
 		System.err.println(list.size());
 	}
+	
+	//@Test
+	public void delete(){
+		sqlSessionTemplate.delete(Log.class.getName()+".delete", 2);
+	}
 
 }

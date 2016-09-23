@@ -19,6 +19,10 @@
 		select * from tbl_log where log_info=#{typeString}
 	</select>
 
+	<delete id="delete" parameterType="int">
+		delete from tbl_log where i_id = #{id}	
+	</delete>
+
 
 	<resultMap type="com.tianjunwei.log.dao.entity.Log" id="log">
 		<id column="i_id" property="id"></id>
