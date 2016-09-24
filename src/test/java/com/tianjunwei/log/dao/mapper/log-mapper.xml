@@ -11,7 +11,9 @@
         size="512"
         readOnly="true" /> -->
 	
-	<insert id="save">
+	
+	<!-- STATEMENT,PREPARED 或CALLABLE -->
+	<insert id="save"  statementType="STATEMENT"><!-- STATEMENT,PREPARED 或CALLABLE -->
 		insert into tbl_log (log_type,log_info) values
 		  <foreach collection ="list" item="list" index= "index" separator =",">
 		    (#{list.logType},#{list.logInfo})
