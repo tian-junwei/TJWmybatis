@@ -25,3 +25,19 @@ CREATE TABLE `users` (
   `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+存储过程
+
+DELIMITER $
+CREATE PROCEDURE mybatis.ges_user_count(IN age INT, OUT user_count INT)
+BEGIN  
+SELECT COUNT(*) FROM users WHERE users.age=age INTO user_count;
+END 
+$
+
+DELIMITER ;
+SET @user_count = 0;
+CALL mybatis.ges_user_count(12, @user_count);
+SELECT @user_count;
+

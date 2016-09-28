@@ -1,6 +1,8 @@
 package com.tianjunwei.learn.learn1;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,7 +33,15 @@ public class Learn1Main {
 	     */
 	    String statement = "com.tianjunwei.learn.learn1.entity.User";//映射sql的标识字符串
 	    //执行查询返回一个唯一user对象的sql
-	    User user = session.selectOne(statement, 1);
-	    System.out.println(user);
+	    //User user = session.selectOne(statement, 1);
+	    //System.out.println(user);
+	    
+	    Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+	    parameterMap.put("age", 12);
+	    parameterMap.put("user_count", -1);
+	    session.selectOne("com.tianjunwei.learn.learn1.entity.User.count", parameterMap);
+	    Integer result = parameterMap.get("user_count");
+	    System.out.println(result);
+	    
 	}
 }

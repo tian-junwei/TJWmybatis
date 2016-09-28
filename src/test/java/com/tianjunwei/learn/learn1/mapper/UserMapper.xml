@@ -14,4 +14,14 @@
          resultType="com.tianjunwei.learn.learn1.entity.User">
          select * from users where id=#{id}
      </select>
+     
+     <select id="count" statementType="CALLABLE" parameterMap="getUserCountMap">
+        CALL mybatis.ges_user_count(?,?)
+     </select>
+       
+     <parameterMap type="java.util.Map" id="getUserCountMap">
+         <parameter property="age" mode="IN" jdbcType="INTEGER"/>
+         <parameter property="user_count" mode="OUT" jdbcType="INTEGER"/>
+     </parameterMap>
+     
  </mapper>
