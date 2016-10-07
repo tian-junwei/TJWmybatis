@@ -31,10 +31,10 @@ public class Learn1Main {
 	     * me.gacl.mapping.userMapper是userMapper.xml文件中mapper标签的namespace属性的值，
 	     * getUser是select标签的id属性值，通过select标签的id属性值就可以找到要执行的SQL
 	     */
-	    String statement = "com.tianjunwei.learn.learn1.entity.User";//映射sql的标识字符串
+	    String statement = "com.tianjunwei.learn.learn1.entity.User.getUser";//映射sql的标识字符串
 	    //执行查询返回一个唯一user对象的sql
-	    //User user = session.selectOne(statement, 1);
-	    //System.out.println(user);
+	    User user = session.selectOne(statement, 1);
+	    System.out.println(user);
 	    
 	    Map<String, Integer> parameterMap = new HashMap<String, Integer>();
 	    parameterMap.put("age", 12);
