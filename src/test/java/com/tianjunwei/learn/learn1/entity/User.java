@@ -1,7 +1,11 @@
 package com.tianjunwei.learn.learn1.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 	
+	
+	private static final long serialVersionUID = -1611006178368335684L;
 	private int id;
 	private String name;
 	private int age;
