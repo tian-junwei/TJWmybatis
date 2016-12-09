@@ -1,11 +1,13 @@
 package com.tianjunwei.learn.learn2;
 
-import org.apache.ibatis.annotations.Select;
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
 
 import com.tianjunwei.learn.learn1.entity.User;
 
 public interface IUserMapper {
 
-	@Select("select * from users where id=#{id}")
 	public User getById(int id);
+	public  List<User> page(RowBounds rowBounds);
 }
