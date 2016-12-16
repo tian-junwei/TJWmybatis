@@ -30,10 +30,12 @@ public class Sqlserver2012Dialect extends Dialect{
 	protected String getLimitString(String sql, String offsetName, int offset, String limitName, int limit) {
 		sql = new StringBuilder(sql)
 	    		.append(" offset ")
-	    		.append(offset)
+	    		.append("?")
 	    		.append(" row fetch next ")
-	    		.append(limit)
+	    		.append("?")
 	    		.append(" rows only").toString();
+		setPageParameter("_offset", offset, Integer.class);
+		setPageParameter("_limit", limit, Integer.class);
 		return sql;
 	}
 

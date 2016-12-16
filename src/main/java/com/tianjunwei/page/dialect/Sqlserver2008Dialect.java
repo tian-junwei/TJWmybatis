@@ -56,7 +56,9 @@ public class Sqlserver2008Dialect extends Dialect{
 				//构建分页sql
 				sb.insert(selectEndIndex, " ROW_NUMBER() OVER (" + orderby + ") as row_nr__,");
 				sb.insert(0, "WITH page_query AS (").append(") SELECT * FROM page_query ");
-				sb.append("WHERE row_nr__ between ").append(offset+1).append(" and ").append(endIndex);
+				sb.append("WHERE row_nr__ between ").append("?").append(" and ").append("?");
+				setPageParameter("_offset", offset+1, Integer.class);
+				setPageParameter("endIndex", endIndex, Integer.class);
 				return sb.toString();
 		    }
 	}
