@@ -19,7 +19,7 @@ public class Learn2Main {
 	    SqlSession session = sessionFactory.openSession();
 	    IUserMapper userMapper = session.getMapper(IUserMapper.class);
 	    userMapper.getById(1);
-	    RowBounds rowBounds = new RowBounds(2, 4);
+	    RowBounds rowBounds = new RowBounds(2, 4);//接口分页编程
 	    System.out.println(userMapper.page(rowBounds).size());
 	}
 }
