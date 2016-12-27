@@ -13,9 +13,7 @@
      </select>
      
      <resultMap type="com.tianjunwei.learn.learn1.entity.User" id="user">    
-     	<id column="id" property="id" javaType="int" jdbcType="INTEGER"></id>
-     	<result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
-     	<result column="age" property="age" javaType="int" jdbcType="INTEGER"/>
+     	<result column="name" property="names" javaType="string" jdbcType="VARCHAR"/>
      </resultMap>
      
  </mapper>

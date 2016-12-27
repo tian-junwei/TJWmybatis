@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.tianjunwei.learn.learn1.Learn1Main;
+import com.tianjunwei.learn.learn1.entity.User;
 
 public class Learn2Main {
 	
@@ -18,8 +19,11 @@ public class Learn2Main {
 	    SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
 	    SqlSession session = sessionFactory.openSession();
 	    IUserMapper userMapper = session.getMapper(IUserMapper.class);
-	    userMapper.getById(1);
-	    RowBounds rowBounds = new RowBounds(2, 4);//接口分页编程
-	    System.out.println(userMapper.page(rowBounds).size());
+	    User user = userMapper.getById(1);
+	    user.getAge();
+	    user.getId();
+	    user.getNames();
+	    /*RowBounds rowBounds = new RowBounds(2, 4);//接口分页编程
+	    System.out.println(userMapper.page(rowBounds).size());*/
 	}
 }

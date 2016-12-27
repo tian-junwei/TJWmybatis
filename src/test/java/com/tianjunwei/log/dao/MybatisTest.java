@@ -34,7 +34,7 @@ public class MybatisTest {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	@Test
+	//@Test
 	public void save(){
 		List<Log> list = new ArrayList<Log>();
 		Log log = new Log();
@@ -54,7 +54,7 @@ public class MybatisTest {
 		System.err.println(log.getLogInfo());
 	}
 	
-	//@Test
+	@Test
 	public void list(){
 		RowBounds rowBounds = new RowBounds(1, 10);
 		String typeString ="a";

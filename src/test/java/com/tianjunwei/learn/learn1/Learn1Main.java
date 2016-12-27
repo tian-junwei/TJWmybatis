@@ -24,10 +24,10 @@ public class Learn1Main {
 	    //执行查询返回一个唯一user对象的sql
 	    User user = session.selectOne(statement, 1);
 	    session.commit(true);
-	    System.out.println(user.getName());
-	    SqlSession session2 = sessionFactory.openSession();
+	    System.out.println(user.getNames());
+	    /*SqlSession session2 = sessionFactory.openSession();
 	    user = session2.selectOne(statement, 1);
-	    System.out.println(user.getName());
+	    System.out.println(user.getName());*/
 	    
 	}
 }
