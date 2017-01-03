@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tianjunwei.lazy.entity.Teacher">
+   
+     <select id="getById" parameterType="int" resultMap="user">
+     	select * from users where users.teacher_id=#{id} 
+     </select>
+     
+     <select id="getTeacher" resultMap="teacher">
+     	select * from tbl_teacher where id=#{id}
+     </select>
+     
+     <resultMap type="com.tianjunwei.lazy.entity.Teacher" id="teacher" >    
+     	<id column="id" property="id" javaType="int" jdbcType="INTEGER"></id>
+     	<result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
+     	 <collection property="users" column="id"  select="com.tianjunwei.lazy.entity.Teacher.getById" javaType="list">
+     	 </collection>
+     </resultMap>
+     
+     <resultMap type="com.tianjunwei.lazy.entity.User" id="user" >    
+     	<id column="id" property="id" javaType="int" jdbcType="INTEGER"></id>
+     	<result column="name" property="names" javaType="string" jdbcType="VARCHAR"/>
+     	<result column="age" property="age" javaType="int" jdbcType="INTEGER"/>
+     </resultMap>
+     
+ </mapper>

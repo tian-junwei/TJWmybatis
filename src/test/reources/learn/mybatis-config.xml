@@ -4,7 +4,7 @@
      <settings>
         <setting name="cacheEnabled" value="true"/>
         <setting name="defaultExecutorType" value="SIMPLE"/> <!--SIMPLE、REUSE、BATCH-->
-        <setting name="aggressiveLazyLoading" value="fasle"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
         <setting name="lazyLoadingEnabled" value="true"/>
      </settings>
      <environments default="development">
@@ -24,6 +24,7 @@
          <mapper resource="com/tianjunwei/learn/learn1/mapper/UserMapper.xml"/>
           <mapper resource="com/tianjunwei/learn/learn2/mapper/UserMapper.xml"/>
           <mapper resource="com/tianjunwei/lazy/mapper/UserMapper.xml"/>
+           <mapper resource="com/tianjunwei/lazy/mapper/TeacherMapper.xml"/>
      </mappers>
      
 </configuration>
