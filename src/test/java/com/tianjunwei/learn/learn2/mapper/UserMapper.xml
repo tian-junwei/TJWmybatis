@@ -3,8 +3,7 @@
  
  <mapper namespace="com.tianjunwei.learn.learn2.IUserMapper">
    
-     <select id="getById" parameterType="int" 
-         resultMap="user">
+     <select id="getById" parameterType="int" resultMap="user">
      	select * from users where id=#{id} and 1=1
      </select>
      
@@ -12,8 +11,10 @@
      	select * from users
      </select>
      
-     <resultMap type="com.tianjunwei.learn.learn1.entity.User" id="user">    
+     <resultMap type="com.tianjunwei.learn.learn1.entity.User" id="user" >    
+     	<id column="id" property="id" javaType="int" jdbcType="INTEGER"></id>
      	<result column="name" property="names" javaType="string" jdbcType="VARCHAR"/>
+     	<result column="age" property="age" javaType="int" jdbcType="INTEGER"/>
      </resultMap>
      
  </mapper>

@@ -31,21 +31,22 @@ import com.tianjunwei.lazy.entity.User;
  * @time 2017 上午10:24:21
  */
 public class LazyMainTeacher {
-public static void main(String [] args){
-		
-		//mybatis的配置文件
-	    String resource = "learn/mybatis-config.xml";
-	    InputStream is = LazyMainTeacher.class.getClassLoader().getResourceAsStream(resource);
-	    //构建sqlSession的工厂
-	    SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
-	    SqlSession session = sessionFactory.openSession();
-	    String statement = "com.tianjunwei.lazy.entity.Teacher.getTeacher";//映射sql的标识字符串
-	    //执行查询返回一个唯一user对象的sql
-	    Teacher teacher =  (Teacher) session.selectList(statement, 1).get(0);
-	    session.commit(true);
-	    System.out.println(teacher.getName());
-	    List<User> users = teacher.getUsers();
-	    System.err.println(users.get(3).getAge());
-	    
-	}
+	public static void main(String [] args){
+			
+			//mybatis的配置文件
+		    String resource = "learn/mybatis-config.xml";
+		    InputStream is = LazyMainTeacher.class.getClassLoader().getResourceAsStream(resource);
+		    //构建sqlSession的工厂
+		    SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
+		    SqlSession session = sessionFactory.openSession();
+		    String statement = "com.tianjunwei.lazy.entity.Teacher.getTeacher";//映射sql的标识字符串
+		    //执行查询返回一个唯一user对象的sql
+		    Teacher teacher =  (Teacher) session.selectList(statement, 1).get(0);
+		    session.commit(true);
+		    System.out.println(teacher.getName());
+		    List<User> users = teacher.getUsers();
+		    System.err.println(users.get(3).getAge());
+		    System.err.println(teacher.getClass());
+		    
+		}
 }

@@ -29,22 +29,23 @@ import com.tianjunwei.lazy.entity.User;
  * @author tianjunwei
  * @time 2017 上午10:24:21
  */
-public class LazyMain {
+public class LazyUser {
+	
 	public static void main(String [] args){
 			
 			//mybatis的配置文件
 		    String resource = "learn/mybatis-config.xml";
-		    InputStream is = LazyMain.class.getClassLoader().getResourceAsStream(resource);
+		    InputStream is = LazyUser.class.getClassLoader().getResourceAsStream(resource);
 		    //构建sqlSession的工厂
 		    SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
 		    SqlSession session = sessionFactory.openSession();
-		    String statement = "com.tianjunwei.lazy.entity.User.getById";//映射sql的标识字符串
+		    String statement = "com.tianjunwei.lazy.entity.Users.getUser";//映射sql的标识字符串
 		    //执行查询返回一个唯一user对象的sql
 		    User user = session.selectOne(statement, 1);
 		    session.commit(true);
 		    System.out.println(user.getNames());
-		    //Teacher teacher = user.getTeacher();
-		    //System.err.println(teacher.getName());
+		    Teacher teacher = user.getTeacher();
+		    System.err.println(teacher.getName());
 		    
 		}
 }

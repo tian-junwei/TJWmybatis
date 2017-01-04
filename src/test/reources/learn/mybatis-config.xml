@@ -22,9 +22,10 @@
      <mappers>
          <!-- 注册userMapper.xml文件--> 
          <mapper resource="com/tianjunwei/learn/learn1/mapper/UserMapper.xml"/>
-          <mapper resource="com/tianjunwei/learn/learn2/mapper/UserMapper.xml"/>
-          <mapper resource="com/tianjunwei/lazy/mapper/UserMapper.xml"/>
-           <mapper resource="com/tianjunwei/lazy/mapper/TeacherMapper.xml"/>
+         <mapper resource="com/tianjunwei/learn/learn2/mapper/UserMapper.xml"/>
+         <mapper resource="com/tianjunwei/lazy/mapper/UserMapper.xml"/>
+         <mapper resource="com/tianjunwei/lazy/mapper/UserMapper2.xml"/>
+         <mapper resource="com/tianjunwei/lazy/mapper/TeacherMapper.xml"/>
      </mappers>
      
 </configuration>
