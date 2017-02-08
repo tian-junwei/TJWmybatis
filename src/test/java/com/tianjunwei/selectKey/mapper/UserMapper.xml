@@ -8,6 +8,13 @@
    	insert into users (name,age) values (#{names},#{age})
    	
    </insert>
+   
+   <insert id="insert" parameterType="com.tianjunwei.selectKey.entity.User">
+   	 <selectKey keyProperty="id" resultType="int" order="AFTER">
+   	 	SELECT LAST_INSERT_ID()
+   	 </selectKey>
+   	 	insert into users (name,age) values (#{names},#{age})
+   </insert>
     
        
  </mapper>

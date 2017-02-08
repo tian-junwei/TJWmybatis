@@ -42,5 +42,8 @@ public class SelectKeyMain {
 	    session.insert("com.tianjunwei.selectKey.entity.User.add", user);
 	    session.commit();
 	    System.err.println(user.getId());
+	    session.insert("com.tianjunwei.selectKey.entity.User.insert", user);
+	    session.commit();
+	    System.err.println(user.getId());
 	}
 }
