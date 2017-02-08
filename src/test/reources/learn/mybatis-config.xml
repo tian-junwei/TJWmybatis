@@ -26,6 +26,7 @@
          <mapper resource="com/tianjunwei/lazy/mapper/UserMapper.xml"/>
          <mapper resource="com/tianjunwei/lazy/mapper/UserMapper2.xml"/>
          <mapper resource="com/tianjunwei/lazy/mapper/TeacherMapper.xml"/>
+         <mapper resource="com/tianjunwei/selectKey/mapper/UserMapper.xml"></mapper>
      </mappers>
      
 </configuration>
