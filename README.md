@@ -6,4 +6,6 @@
 
 （二）实现一个mybatis插件用于通过计算sql语句执行前后时间，获得每条sql语句的性能（已实现）
 
-（三）重写mybatis的配置文件解析类，增加mybatis配置文件配置的多样性。（未实现）
+（三）重写mybatis的配置文件解析类，增加mybatis配置文件配置的多样性。（未实现）<br>
+
+[ myBatis源码学习之SqlSessionFactoryBuilder](http://blog.csdn.net/qq924862077/article/details/50437043)<br>
