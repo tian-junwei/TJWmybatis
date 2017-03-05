@@ -9,3 +9,4 @@
 （三）重写mybatis的配置文件解析类，增加mybatis配置文件配置的多样性。（未实现）<br>
 
 [ myBatis源码学习之SqlSessionFactoryBuilder](http://blog.csdn.net/qq924862077/article/details/50437043)<br>
+[Mybatis逻辑分页原理解析RowBounds](http://blog.csdn.net/qq924862077/article/details/52611848)<br>
