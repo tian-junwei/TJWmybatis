@@ -15,6 +15,7 @@
  */
 package com.tianjunwei.lazy;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -31,7 +32,7 @@ import com.tianjunwei.lazy.entity.User;
  * @time 2017 上午10:24:21
  */
 public class LazyMainTeacher {
-	public static void main(String [] args){
+	public static void main(String [] args) throws IOException{
 			
 			//mybatis的配置文件
 		    String resource = "learn/mybatis-config.xml";
@@ -47,6 +48,7 @@ public class LazyMainTeacher {
 		    List<User> users = teacher.getUsers();
 		    System.err.println(users.get(3).getAge());
 		    System.err.println(teacher.getClass());
+		    System.in.read();
 		    
 		}
 }

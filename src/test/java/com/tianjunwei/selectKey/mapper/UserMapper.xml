@@ -5,7 +5,7 @@
    
    <insert id="add" parameterType="com.tianjunwei.selectKey.entity.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
    
-   	insert into users (name,age) values (#{names},#{age})
+   		insert into users (name,age) values (#{names},#{age})
    	
    </insert>
    

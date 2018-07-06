@@ -1,11 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.tianjunwei</groupId>
-		<artifactId>TTparent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+
+	<groupId>com.hikvision</groupId>
 	<artifactId>TTmybatis</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
@@ -15,8 +12,16 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<jedis.version>2.8.0</jedis.version>
 		<junit.version>4.12</junit.version>
+		<junit.jupiter.version>5.2.0</junit.jupiter.version>
+    	<junit.platform.version>1.2.0</junit.platform.version>
 	</properties>
 	<dependencies>
+		
+		<dependency>
+		    <groupId>org.mybatis.dynamic-sql</groupId>
+		    <artifactId>mybatis-dynamic-sql</artifactId>
+		    <version>1.1.0</version>
+		</dependency>
 		
 		<dependency>
 		    <groupId>org.javassist</groupId>
@@ -70,7 +75,31 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 		</dependency>
-
+		<dependency>
+	      <groupId>org.junit.jupiter</groupId>
+	      <artifactId>junit-jupiter-api</artifactId>
+	      <version>${junit.jupiter.version}</version>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.junit.jupiter</groupId>
+	      <artifactId>junit-jupiter-engine</artifactId>
+	      <version>${junit.jupiter.version}</version>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.junit.platform</groupId>
+	      <artifactId>junit-platform-launcher</artifactId>
+	      <version>${junit.platform.version}</version>
+	      <scope>test</scope>
+	    </dependency>
+	    
+	    <dependency>
+	      <groupId>org.assertj</groupId>
+	      <artifactId>assertj-core</artifactId>
+	      <version>3.10.0</version>
+	      <scope>test</scope>
+	    </dependency>
 		
 
 		<!--spring-context -->
