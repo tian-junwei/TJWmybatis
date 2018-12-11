@@ -73,6 +73,7 @@ public class PageInterceptor implements Interceptor{
 	      	
 	        final AbstractDialect dialect;
 	        try {
+	        	//构造方言类
 	            Class clazz = Class.forName(dialectClass);
 	            Constructor constructor = clazz.getConstructor(new Class[]{MappedStatement.class, Object.class, RowBounds.class});
 	            dialect = (AbstractDialect)constructor.newInstance(new Object[]{ms, parameter, rowBounds});
@@ -113,6 +114,7 @@ public class PageInterceptor implements Interceptor{
 			return newBoundSql;
 		}
 
+		//生成新的MappedStatement
 		private MappedStatement copyFromMappedStatement(MappedStatement ms,SqlSource newSqlSource) {
 			Builder builder = new Builder(ms.getConfiguration(),ms.getId(),newSqlSource,ms.getSqlCommandType());
 			

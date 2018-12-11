@@ -49,6 +49,7 @@ public abstract class AbstractDialect {
         init();
     }
 
+    //从新构造mybatis参数，将分页limit 和offset作为参数传入
     @SuppressWarnings({"unchecked", "rawtypes"})
 	protected void init(){
         boundSql = mappedStatement.getBoundSql(parameterObject);
@@ -114,17 +115,6 @@ public abstract class AbstractDialect {
         pageParameters.put(name, value);
     }
 
-    /**
-     * @Title: getLimitString 
-     * @Description: 获得分页语句
-     * @param sql
-     * @param offsetName
-     * @param offset
-     * @param limitName
-     * @param limit
-     * @return    
-     * String     
-     * @throws
-     */
+    //获取子类中具体的分页sql
     protected abstract String getLimitString(String sql, String offsetName,int offset, String limitName, int limit);
 }

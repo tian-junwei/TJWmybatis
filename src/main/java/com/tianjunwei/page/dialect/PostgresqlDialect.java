@@ -19,16 +19,6 @@ public class PostgresqlDialect extends AbstractDialect {
         super(mappedStatement, parameterObject, pageBounds);
     }
 
-    /***
-     * @Title: getLimitString
-     * @Description: 组装分页sql语句
-     * @param sql
-     * @param offsetName
-     * @param offset
-     * @param limitName
-     * @param limit
-     * @return
-     */
     protected String getLimitString(String sql, String offsetName,int offset, String limitName, int limit) {
         StringBuffer buffer = new StringBuffer( sql.length()+20 ).append(sql);
         if(offset > 0){

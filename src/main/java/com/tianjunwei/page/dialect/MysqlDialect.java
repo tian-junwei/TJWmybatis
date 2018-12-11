@@ -23,16 +23,6 @@ public class MysqlDialect extends AbstractDialect {
 	        super(mappedStatement, parameterObject, pageBounds);
 	    }
 
-	/**
-	 * 组装分页语句
-	 * @param sql 
-	 * @param offsetName 
-	 * @param offset 
-	 * @param limitName 
-	 * @param limit 
-	 * @return String 
-	 * @throws
-	 */
 	protected String getLimitString(String sql, String offsetName, int offset, String limitName, int limit) {
 		StringBuffer buffer = new StringBuffer(sql.length() + 20).append(sql);
 		if (offset > 0) {
