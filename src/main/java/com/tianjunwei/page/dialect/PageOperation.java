@@ -39,10 +39,10 @@ public  class PageOperation {
     protected List<ParameterMapping> parameterMappings;
     protected Map<String, Object> pageParameters = new HashMap<String, Object>();
     private String pageSQL;
-    private Dialect dialect;
+    private AbstractDialect dialect;
 
     
-    public PageOperation(MappedStatement mappedStatement, Object parameterObject, RowBounds pageBounds,Dialect dialect){
+    public PageOperation(MappedStatement mappedStatement, Object parameterObject, RowBounds pageBounds, AbstractDialect dialect){
         this.mappedStatement = mappedStatement;
         this.parameterObject = parameterObject;
         this.pageBounds = pageBounds;

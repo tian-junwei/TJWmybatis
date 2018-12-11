@@ -17,7 +17,7 @@ import org.apache.ibatis.session.RowBounds;
  * @date 2016 年 3 月31日 下午11:15:47
  * @version V1.0
  */
-public class MysqlDialect extends Dialect {
+public class MysqlDialect extends AbstractDialect {
 
 	public MysqlDialect(MappedStatement mappedStatement, Object parameterObject, RowBounds pageBounds) {
 	        super(mappedStatement, parameterObject, pageBounds);

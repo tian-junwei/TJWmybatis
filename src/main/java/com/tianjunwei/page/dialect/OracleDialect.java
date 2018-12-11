@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.session.RowBounds;
 
-public class OracleDialect  extends Dialect{
+public class OracleDialect  extends AbstractDialect {
 
 	public OracleDialect(MappedStatement mappedStatement,
 			Object parameterObject, RowBounds pageBounds) {
@@ -27,7 +27,7 @@ public class OracleDialect  extends Dialect{
 	 * @param limitName
 	 * @param limit
 	 * @return
-	 * @see com.tianjunwei.page.dialect.Dialect#getLimitString(java.lang.String, java.lang.String, int, java.lang.String, int)   
+	 * @see AbstractDialect#getLimitString(java.lang.String, java.lang.String, int, java.lang.String, int)
 	 */ 
 	@Override
 	protected String getLimitString(String sql, String offsetName, int offset, String limitName, int limit) {

@@ -20,7 +20,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.mapping.MappedStatement.Builder;
 
-import com.tianjunwei.page.dialect.Dialect;
+import com.tianjunwei.page.dialect.AbstractDialect;
 import com.tianjunwei.page.dialect.DialectFactory;
 
 @Intercepts({@Signature(
@@ -71,11 +71,11 @@ public class PageInterceptor implements Interceptor{
 	        }
 	      	setDialectClass(dialectClass);
 	      	
-	        final Dialect dialect;
+	        final AbstractDialect dialect;
 	        try {
 	            Class clazz = Class.forName(dialectClass);
 	            Constructor constructor = clazz.getConstructor(new Class[]{MappedStatement.class, Object.class, RowBounds.class});
-	            dialect = (Dialect)constructor.newInstance(new Object[]{ms, parameter, rowBounds});
+	            dialect = (AbstractDialect)constructor.newInstance(new Object[]{ms, parameter, rowBounds});
 	        
 	        } catch (Exception e) {
 	            throw new ClassNotFoundException("Cannot create dialect instance: "+dialectClass,e);

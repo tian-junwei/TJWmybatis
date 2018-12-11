@@ -3,7 +3,7 @@ package com.tianjunwei.page.dialect;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.session.RowBounds;
 
-public class Sqlserver2008Dialect extends Dialect{
+public class Sqlserver2008Dialect extends AbstractDialect {
 	
 	private static final String ORDERBY = "order by";
 	private static final String SELECT = "select";
@@ -28,7 +28,7 @@ public class Sqlserver2008Dialect extends Dialect{
 	 * @param limitName
 	 * @param limit
 	 * @return
-	 * @see com.tianjunwei.page.dialect.Dialect#getLimitString(java.lang.String, java.lang.String, int, java.lang.String, int)   
+	 * @see AbstractDialect#getLimitString(java.lang.String, java.lang.String, int, java.lang.String, int)
 	 */ 
 	@Override
 	protected String getLimitString(String sql, String offsetName, int offset, String limitName, int limit) {

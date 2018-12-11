@@ -13,7 +13,7 @@ import org.apache.ibatis.session.RowBounds;
  * @modify by reason:
  * @version V1.0
  */
-public class PostgresqlDialect extends Dialect{
+public class PostgresqlDialect extends AbstractDialect {
 
     public PostgresqlDialect(MappedStatement mappedStatement, Object parameterObject, RowBounds pageBounds) {
         super(mappedStatement, parameterObject, pageBounds);
