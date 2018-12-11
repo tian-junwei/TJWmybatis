@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tianjunwei.main.entity.User">
+
+    <select id="page" resultMap="user">
+         	select * from users
+    </select>
+
+    <resultMap type="com.tianjunwei.main.entity.User" id="user" >
+        <id column="id" property="id" javaType="int" jdbcType="INTEGER"></id>
+        <result column="name" property="name" javaType="string" jdbcType="VARCHAR"/>
+        <result column="age" property="age" javaType="int" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+</mapper>

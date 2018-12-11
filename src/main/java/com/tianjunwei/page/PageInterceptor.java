@@ -81,15 +81,23 @@ public class PageInterceptor implements Interceptor{
 	            throw new ClassNotFoundException("Cannot create dialect instance: "+dialectClass,e);
 	        }
 	        final BoundSql boundSql = ms.getBoundSql(parameter);
+			//创建新的MappedStatement，此时的sql语句已经是符合数据库产品的分页语句
+			//dialect.getPageSQL()获得分页语句
+			//dialect.getParameterMappings(), dialect.getParameterObject(),添加了两个参数及其值，两个参数为_limit和_offset
 	        queryArgs[MAPPED_STATEMENT_INDEX] = copyFromNewSql(ms,boundSql,dialect.getPageSQL(), dialect.getParameterMappings(), dialect.getParameterObject());
+			//sql语句的参数集合
 	        queryArgs[PARAMETER_INDEX] = dialect.getParameterObject();
+			//设置为不分页，由新的sql语句进行物理分页
 	        queryArgs[ROWBOUNDS_INDEX] = new RowBounds(RowBounds.NO_ROW_OFFSET,RowBounds.NO_ROW_LIMIT);
 	        return invocation.proceed();
 		}
 
+		//创建新的MappedStatement
 	    private MappedStatement copyFromNewSql(MappedStatement ms, BoundSql boundSql,
-	                                           String sql, List<ParameterMapping> parameterMappings, Object parameter){
+											   String sql, List<ParameterMapping> parameterMappings, Object parameter){
+			//根据新的分页sql语句创建BoundSql
 	        BoundSql newBoundSql = copyFromBoundSql(ms, boundSql, sql, parameterMappings, parameter);
+	        //根据newBoundSql创建新的MappedStatement
 	        return copyFromMappedStatement(ms, new BoundSqlSqlSource(newBoundSql));
 	    }
 
